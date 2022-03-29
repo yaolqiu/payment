@@ -1,0 +1,14 @@
+{
+    "name": "wcyx/payment",
+    "description": "Payment",
+    "type": "library",
+    "require": {
+        "php": ">=7.0",
+        "guzzlehttp/guzzle": "^7.4"
+    },
+    "autoload": {
+        "psr-4": {"wcyx\\": "src/"}
+    },
+
+    "license": "MIT"
+}
