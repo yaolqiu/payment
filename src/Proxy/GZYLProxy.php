@@ -16,7 +16,8 @@ class GZYLProxy extends GateWay implements PayInterface,GZYLSplitInterface
     public function pay(string $channel_name, array $param)
     {
 
-        $channel_gateway_class = $this->getChannelGateway($channel_name);
+        //$channel_gateway_class = $this->getChannelGateway($channel_name);
+        $channel_gateway_class = $this->getCommonGateway();
         if(!class_exists($channel_gateway_class)) {
             throw new GatewayException(sprintf('Gateway[%s] not found ',$channel_gateway_class));
         }
@@ -162,4 +163,19 @@ class GZYLProxy extends GateWay implements PayInterface,GZYLSplitInterface
     {
         return 'wcyx\Gateway\GZYL\\' . 'Pay' .str_replace('_','',ucwords(strtolower($channel_name),'_')) . 'Gateway';
     }
+
+    /***
+     *
+     * @description 返回统一支付处理类
+     * @author  lyqiu
+     * @date    2022/3/29 17:07
+     * @package wcyx\Proxy\\${CLASS_NAME}\getCommonGateway
+     * @return string
+     *
+     */
+    public function getCommonGateway(): string
+    {
+        return 'wcyx\Gateway\GZYL\\PayGateway';
+    }
+
 }

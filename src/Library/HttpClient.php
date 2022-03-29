@@ -37,18 +37,17 @@ class HttpClient
             $reason = $response->getReasonPhrase();
             throw new GatewayException(sprintf("request error[%s] and the message:[%s]",$reason));
         }
-
         $body = $response->getBody();
         $content = $body->getContents();
-        // print_R([
-        //     'step'=> 'start',
-        //     'url'=> $url,
-        //     'data'=> $data
-        // ]);
-        // print_R([
-        //     'step'=> 'end',
-        //     'response'=> $body->getContents()
-        // ]);
+        print_R([
+            'step'=> 'start',
+            'url'=> $url,
+            'data'=> $data
+        ]);
+        print_R([
+            'step'=> 'end',
+            'response'=> $body->getContents()
+        ]);
         return $content;
     }
 
