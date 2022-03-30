@@ -14,13 +14,25 @@ namespace wcyx\Library;
 abstract class PaymentConfig
 {
     // 微信支付
-    const WECHAT = "wechat";
+    const WECHAT = "Wechat";
     // 支付宝支付
     const ALIPAY = "Alipay";
     //广州银联支付
     const GZYL = "GZYL";
 
 
+    const WECHAT_CHANNEL = [
+        'APPLET'=> [
+            'label'=> '微信小程序支付',
+            'short_label'=> '微信支付',
+            'value'=> 'JSAPI'
+        ],
+        'JSAPI'=> [
+            'label'=> '微信JSAPI支付',
+            'short_label'=> '微信支付',
+            'value'=> 'JSAPIe'
+        ]
+    ];
 
     //广州银联支付渠道
     const GZYL_CHANNEL = [
