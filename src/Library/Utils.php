@@ -43,5 +43,18 @@ class Utils
         return $encode == "UTF-8" ? $encode : mb_convert_encoding($string,'UTF-8',$encode);
     }
 
-
+    /****
+     *
+     * @description 统一解压
+     * @author  lyqiu
+     * @date    2022/3/30 15:51
+     * @package wcyx\Library\\${CLASS_NAME}\jsonDecode
+     * @param $str
+     * @return mixed
+     *
+     */
+    public static function jsonDecode($str)
+    {
+        return json_decode($str,true);
+    }
 }
