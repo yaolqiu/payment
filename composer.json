@@ -1,7 +1,7 @@
 {
     "name": "wcyx/payment",
-    "description": "Payment",
     "require": {
+    "description": "Payment",
         "php": ">=7.0",
         "guzzlehttp/guzzle": "^7.4",
         "wechatpay/wechatpay": "^1.4.3"
