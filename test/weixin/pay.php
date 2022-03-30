@@ -3,7 +3,7 @@
 require '../../vendor/autoload.php';
 $config = require './config.php';
 
-// try {
+try {
 
     $data = [
         'out_trade_no'=> 'PAY'.time(),
@@ -19,9 +19,9 @@ $config = require './config.php';
     $channel = 'APPLET';
     $info = $payment->pay($channel,$data);
     var_dump($info);
-// } catch (Exception $e) {
-//     print_R($e->getTrace());
-//     print_R([$e->getMessage(),$e->getCode()]);
-//     exit();
-// }
+} catch (Exception $e) {
+    print_R($e->getTrace());
+    print_R([$e->getMessage(),$e->getCode()]);
+    exit();
+}
 
