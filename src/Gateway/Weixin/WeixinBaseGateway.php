@@ -7,6 +7,7 @@ use wcyx\Library\GateWay;
 use wcyx\Library\Utils;
 use WeChatPay\Builder;
 use WeChatPay\Crypto\Rsa;
+use WeChatPay\Formatter;
 use WeChatPay\Util\PemUtil;
 
 class WeixinBaseGateway extends GateWay
@@ -27,7 +28,7 @@ class WeixinBaseGateway extends GateWay
         $merchantId = self::$config['merchant_id'];
 
         // 从本地文件中加载「商户API私钥」，「商户API私钥」会用来生成请求的签名
-        $merchantPrivateKeyPath = self::$config['merchant_private_key_path'];
+        $merchantPrivateKeyPath = self::$config['merchant_key_path'];
         if(!file_exists($merchantPrivateKeyPath)) {
             throw new \Exception(sprintf('Not Found merchant private[%s]',$merchantPrivateKeyPath));
         }
@@ -59,7 +60,6 @@ class WeixinBaseGateway extends GateWay
 
     }
 
-
     /***
      *
      * @description 统一处理结果
@@ -77,12 +77,37 @@ class WeixinBaseGateway extends GateWay
             $response = static::getInstance()
                 ->chain($url)
                 ->post($data);
-            $content = Utils::jsonDecode($response->getBody()->getContents());
+            return Utils::jsonDecode($response->getBody()->getContents());
         } catch (RequestException $e) {
-
             throw new \Exception($e->getResponse()->getBody()->getContents());
         }
     }
+
+
+
+    public function genPaySign($appid,$prepay_id)
+    {
+
+
+        $data = [
+            'appid'=> $appid,
+            'timeStamp'=> (string)Formatter::timestamp(),
+            'nonceStr'=> Formatter::nonce(),
+            'package'=> 'prepay_id=' . $prepay_id,
+        ];
+        $string = "";
+        foreach ($data as $value) {
+            $string = $string . "{$value}\n";
+        }
+        $merchant_key_content = file_get_contents(self::$config['merchant_key_path']);
+        $data['paySign'] = Rsa::sign(
+            Formatter::joinedByLineFeed(...array_values($data)),
+            $merchant_key_content
+        );
+        $data['signType'] = 'RSA';
+        return $data;
+    }
+
 }
 
 

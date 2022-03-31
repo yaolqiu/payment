@@ -3,6 +3,7 @@ namespace wcyx\Gateway\Weixin;
 
 use GuzzleHttp\Exception\RequestException;
 use wcyx\Contract\GateWayInterface;
+use wcyx\Library\Utils;
 
 
 /****
@@ -44,9 +45,8 @@ class PayAppletGateway extends WeixinBaseGateway implements GateWayInterface
                 'openid'=> $param['openid']
             ],
         ]];
-        print_R($post_data);
-        return $this->uniResponse(GatewayUrl::JSAPI,$post_data);
-
+        $result = $this->uniResponse(GatewayUrl::JSAPI,$post_data);
+        return $this->genPaySign($param['appid'],$result['prepay_id']);
     }
 }
 

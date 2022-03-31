@@ -11,9 +11,9 @@ return [
     'merchant_id'=> '1601049941',
     'merchant_api_v2'=> 'xMfysNiNS4qRYWvUGCq6WVuYW3NDjFYo',
     'merchant_api_v3'=> 'YkBR6KAJqb6vSBKB9pGrWhHKSk2obE7w',
-    'merchant_serial'=> '12046EE338C59E01E9C38BF93E9740E6892C7433',
-    'merchant_private_key_path'=> 'D:\PhpstormProjects\composer\Payment\test\weixin\cert\merchant_private_key.pem',
-    'merchant_public_key_path'=> 'D:\PhpstormProjects\composer\Payment\test\weixin\cert\merchant_public_key.pem',
+    'merchant_serial'=> '7FC336411D7AC27724B35E4530A655F201E2F49C',
+    'merchant_key_path'=> 'D:\PhpstormProjects\composer\Payment\test\weixin\cert\merchant_key.pem',
+    'merchant_certificate_path'=> 'D:\PhpstormProjects\composer\Payment\test\weixin\cert\merchant_cert.pem',
     'platform_certificate_path'=> 'D:\PhpstormProjects\composer\Payment\test\weixin\cert\platform_certificate.pem',
 ];
 

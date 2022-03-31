@@ -7,10 +7,10 @@ try {
 
     $data = [
         'out_trade_no'=> 'PAY'.time(),
-        'appid'=> 'wx409b18fe87732520',
+        'appid'=> 'wxffc4a2a30baa5bcb',
         'amount'=> 1000,
         'notify_url'=> 'https://wcyx.dianxfu.com/noftify',
-        'openid'=> 'oDsRMuJiQ9N0KMdMel9Vu47Q_FUc',
+        'openid'=> 'o2k2r5IbLxY50dXLuLnZm0Mo5mlA',
         'subject'=> 'testpay', //经测试发现这个字段不能带空格
         'body'=> 'testpay',
     ];

@@ -43,6 +43,29 @@ class Utils
         return $encode == "UTF-8" ? $encode : mb_convert_encoding($string,'UTF-8',$encode);
     }
 
+    /***
+     *
+     * @description 获取随机字符
+     * @author  lyqiu
+     * @date    2022/3/30 18:47
+     * @package wcyx\Library\\${CLASS_NAME}\nonceStr
+     * @param int $length
+     * @return string
+     *
+     */
+    public static function nonceStr($length=6)
+    {
+        $str = 'abcdefghijklnmopqrstuvwxyzABCDEFGHIJKLNMOPQRSTUVWXYZ0123456789';
+        $str_len = strlen($str) - 1;
+        $nonce_str = '';
+        for ($i=0;$i<$length;$i++) {
+            $nonce_str = $nonce_str . $str[mt_rand(0,$str_len)];
+        }
+        return $nonce_str;
+    }
+
+
+
     /****
      *
      * @description 统一解压
@@ -57,4 +80,8 @@ class Utils
     {
         return json_decode($str,true);
     }
+
+
+
+
 }
