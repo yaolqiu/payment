@@ -1,5 +1,5 @@
 {
-    "name": "payment",
+    "name": "wcyx/payment",
     "require": {
     "description": "Payment",
         "php": ">=7.0",
